@@ -9,7 +9,7 @@ tags:
 
 ### 安装插件
 
-> pinia-plugin-persist
+> npm i pinia-plugin-persist --save
 
 ### store 文件夹创建 index 文件
 
@@ -21,6 +21,25 @@ const pinia = createPinia()
 //使用插件
 pinia.use(piniaPluginPersist)
 export default pinia
+```
+
+### store/user.js 模块开启缓存
+
+```js
+export const useUserStore = defineStore({
+  id: 'user',
+
+  state: () => {
+    return {
+      name: '张三'
+    }
+  },
+
+  // 开启数据缓存
+  persist: {
+    enabled: true
+  }
+})
 ```
 
 ### 模块文件下添加 缓存配置
@@ -39,7 +58,7 @@ export const useUserStore = defineStore('user', {
     enabled: true,
     strategies: [
       {
-        key: 'attendance_user',
+        key: 'attendance_user', // 数据默认存在 sessionStorage 里，并且会以 store 的 id 作为 key。
         storage: localStorage // 缓存模式 本地缓存
         //paths: ['age']
       }
