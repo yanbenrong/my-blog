@@ -85,7 +85,9 @@ export const useStore = defineStore('storeId', {
 
 3. 组件修改 pinia 的 state 数据
 
-> 本身 pinia 可以直接修改 state 数据，无需像 vuex 一样通过 mutations 才可以修改，但是上面写的 let { name } = store;这种解构是不可以的，所以要换解构的方式。
+::: danger 注意：
+本身 pinia 可以直接修改 state 数据，无需像 vuex 一样通过 mutations 才可以修改，但是上面写的 let { name } = store;这种解构是不可以的，所以要换解构的方式。
+:::
 
 ```vue
 <template>
