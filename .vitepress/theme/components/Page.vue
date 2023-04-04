@@ -148,7 +148,7 @@ const transDate = (date: string) => {
   background: var(--vp-c-bg);
   max-width: 600px;
   box-shadow: 6px 6px var(--vp-c-brand);
-  border: 4px solid #3f4e4f;
+  border: 4px solid #708090;
   cursor: pointer;
 }
 

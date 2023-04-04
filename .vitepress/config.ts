@@ -5,7 +5,7 @@
  * @Description: 
  * @params: 
  * @Date: 2023-03-30 16:24:57
- * @LastEditTime: 2023-04-01 20:55:33
+ * @LastEditTime: 2023-04-04 21:34:56
  */
 import { getPosts, getPostLength } from "./theme/serverUtils";
 import { buildBlogRSS } from "./theme/rss";
@@ -20,8 +20,8 @@ async function config() {
         "link",
         {
           rel: "icon",
-          type: "image/svg",
-          href: "/horse.svg",
+          type: "image/png",
+          href: "/luckydog.png",
         },
       ],
       [
@@ -50,7 +50,8 @@ async function config() {
     lastUpdated: false,
     themeConfig: {
       // repo: "clark-cui/homeSite",
-      logo: "/horse.svg",
+      logo: "/luckydog.png",
+      // logo: "/horse.svg",
       docsDir: "/",
       // docsBranch: "master",
       posts: await getPosts(),
@@ -78,7 +79,7 @@ async function config() {
         //   link: "https://clark-cui.top/feed.xml",
         // },
       ],
-      socialLinks: [
+      // socialLinks: [
         // { icon: "github", link: "https://github.com/clark-cui" },
         // { icon: "twitter", link: "https://twitter.com/qingshuihe1" },
         // {
@@ -89,7 +90,7 @@ async function config() {
         //   },
         //   link: "mailto:rongchuancui@gmail.com",
         // },
-      ],
+      // ],
       // outline: 2, //设置右侧aside显示层级
       aside: false,
     },
