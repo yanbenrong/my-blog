@@ -248,7 +248,7 @@ Object.assign(target, source)
 
 :::
 
-## Array 常用静态方法
+## Array 常用方法
 
 | 方法    |   作用   |                    说明                    |
 | ------- | :------: | :----------------------------------------: |
@@ -256,3 +256,76 @@ Object.assign(target, source)
 | map     | 迭代数组 |      返回新数组，返回处理后的数组元素      |
 | filter  | 过滤数组 | 返回新数组，返回的是筛选满足条件的数组元素 |
 | reduce  |  累计器  |      返回累计处理的结果，经常用于求和      |
+
+::: info 其他方法
+
+- jion `数组元素拼接成字符串，返回字符串`
+- find `查找元素，返回符合测试条件的第一个元素的值，如果没有符合条件的则返回undefined`
+- every `检测数组中所有元素，如果所有元素都满足测试条件，则返回true，否则返回false`
+- some `检测数组中所有元素，如果有元素满足测试条件，则返回true，否则返回false`
+- concat `合并两个数组，生成新的数组`
+- sort `对原数组进行排序`
+- splice `删除或替换原数组`
+- reverse `反转数组`
+- findIndex `查找元素的索引值`
+  :::
+
+### reduce
+
+`arr.reduce((上一次的值,当前值)=>{},初始值)`
+
+::: warning reduce 执行过程
+
+- 如果没有起始值，则上一次值以数组的第一个数组元素的值
+- 每一次循环，把返回值给做为 下一次循环的上一次值
+- 如果有起始值，则 起始值做为上一次值
+  :::
+
+```js
+const arr = [1, 2, 4, 5]
+// 没有初始值
+let num = arr.reduce((prev, current) => {
+  return prev + current
+}) // 12
+// 有初始值
+let num = arr.reduce((prev, current) => {
+  return prev + current
+}, 10) // 22
+```
+
+如果遍历数组对象，计算其中属性的和，一定要加 `初始值`
+
+```js
+const arr = [
+  { s: 10000, name: 'a' },
+  { s: 11000, name: 'b' },
+  { s: 12000, name: 'c' }
+]
+
+let total = arr.reduce((prev, cur) => {
+  cur.s = cur.s * 1.3
+  return prev + cur.s
+}, 0)
+```
+
+### 伪数组 转化为 真数组
+
+- Array.from(arr)
+
+## string 常用方法
+
+::: info 实例方法
+
+- 实例属性 length 用来获取字符串的长度
+
+- split(分隔符) 用来将字符串拆分成数组
+- substring (需要截取的第一个字符的索引[,结束的索号]) 用于字符串截取  `结束索引号不包含 截取字符串内`
+- startswith(检测字符串[，检测位置索引号]) 检测是否以某字符开头
+- includes(搜索的字符审[，检测位置索引号]) 判断一个字符串是否包含在另一个字符串中，根据情况返回 true 或 false
+- toupperCase 用于将字母转换成大写
+- toLowerCase 用于将就转换成小写
+- indexof 检测是否包含某字符
+- endswith 检测是否以某字符结尾
+- replace 用于替换字符串，支持正则匹配
+- match 用于查找字符串，支持正则匹配
+  :::

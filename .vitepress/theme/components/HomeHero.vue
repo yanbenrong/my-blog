@@ -1,10 +1,14 @@
 <template>
-  <div class="pic"></div>
+  <div class="pic">
+    <img src="../../../public/donghua4.gif" alt="">
+
+  </div>
 </template>
 <script lang="ts" setup>
 import { onMounted } from "vue";
 import lottie from "lottie-web";
 onMounted(() => {
+  return
   // storage lottie
   const svgContainer = document.getElementById("svgContainer");
   if (svgContainer) {
@@ -30,5 +34,12 @@ onMounted(() => {
 .pic {
   text-align: center;
   height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pic img{
+  width: 201px;
+  height: 177px;
 }
 </style>
