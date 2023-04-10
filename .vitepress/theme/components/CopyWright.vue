@@ -10,10 +10,8 @@
 <template>
   <footer>
     Powered by
-    <a href="" target="_blank" title="作者"
-      >Yan Benrong</a
-    >
-    | Copyright © 2019-{{ date }} | MIT License
+    <a href="" target="_blank" title="作者">Yan Benrong</a>
+    | Copyright © 2020-{{ date }}
   </footer>
 </template>
 <script lang="ts" setup>
@@ -29,10 +27,12 @@ footer {
   background: var(--vp-c-bg);
   color: var(--vp-c-text);
 }
+
 a {
   color: var(--vp-c-brand);
   font-weight: bold;
 }
+
 a:hover {
   text-decoration: none;
   color: var(--vp-c-hover);

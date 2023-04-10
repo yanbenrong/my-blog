@@ -319,7 +319,7 @@ let total = arr.reduce((prev, cur) => {
 - 实例属性 length 用来获取字符串的长度
 
 - split(分隔符) 用来将字符串拆分成数组
-- substring (需要截取的第一个字符的索引[,结束的索号]) 用于字符串截取  `结束索引号不包含 截取字符串内`
+- substring (需要截取的第一个字符的索引[,结束的索号]) 用于字符串截取 `结束索引号不包含 截取字符串内`
 - startswith(检测字符串[，检测位置索引号]) 检测是否以某字符开头
 - includes(搜索的字符审[，检测位置索引号]) 判断一个字符串是否包含在另一个字符串中，根据情况返回 true 或 false
 - toupperCase 用于将字母转换成大写
@@ -329,3 +329,89 @@ let total = arr.reduce((prev, cur) => {
 - replace 用于替换字符串，支持正则匹配
 - match 用于查找字符串，支持正则匹配
   :::
+
+## 原型链 - 查找规则
+
+- 当访问一个对象的属性(包括方法)时，首先查找这个对象自身有没有该属性。
+
+- 如果没有就查找它的原型 (也就是 \_ _proto_ \_ 指向的 prototype 原型对象)
+
+- 如果还没有就查找原型对象的原型 (object 的原型对象)
+
+- 依此类推一直找到 object 为止 (null)
+
+- proto 对象原型的`意义就在于为对象成员查找机制提供一个方向，或者说一条路线`
+
+- 可以使用 instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上
+
+## 深浅拷贝
+
+### 浅拷贝
+
+- 拷贝对象之后，里面的属性值是简单数据类型直接拷贝值
+- 如果属性值是引用数据类型则拷贝的是地址
+
+### 深拷贝
+
+- 拷贝的是 对象 而不是地址
+
+::: tip 常见方法
+
+- 递归函数 拷贝
+- lodash/cloneDeep
+- JSON.stringfy() 实现
+  :::
+
+## 手写防抖函数
+
+### 核心思路
+
+- 声明一个定时器变量
+- 事件触发时先判断是否有定时器了，如果有定时器先清除以前的定时器
+- 如果没有定时器则开启定时器，记得存到变量里面
+- 在定时器里面调用要执行的函数
+
+### 实现
+
+```js
+function debounce(fn, t) {
+  let timer
+  return function () {
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(function () {
+      fn()
+    }, t)
+  }
+}
+```
+
+## 手写节流函数
+
+### 核心思路
+
+1. 声明一个定时器变量
+2. 事件触发时都先判断是否有定时器了，`如果有定时器则不开启新定时器`
+3. 如果没有定时器则开启定时器，记得存到变量里面
+
+- 定时器里面调用执行的函数
+- 定时器里面要把定时器清空
+
+### 实现
+
+```js
+function throttle(fn, t) {
+  let timer = null
+  return function () {
+    if (!timer) {
+      timer = setTimeout(function () {
+        fn()
+        timer = null
+      }, t)
+    }
+  }
+}
+```
+
+::: danger 注意
+setTimeout 中是无法清除定时器的，因为定时器还在运作，即使使用了 clearTimeout timer 仍然是有值的 所以使用 null 赋值来清空
+:::
