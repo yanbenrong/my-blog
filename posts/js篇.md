@@ -398,6 +398,8 @@ function debounce(fn, t) {
 
 ### 实现
 
+#### 方式一
+
 ```js
 function throttle(fn, t) {
   let timer = null
@@ -415,3 +417,20 @@ function throttle(fn, t) {
 ::: danger 注意
 setTimeout 中是无法清除定时器的，因为定时器还在运作，即使使用了 clearTimeout timer 仍然是有值的 所以使用 null 赋值来清空
 :::
+
+#### 方式二
+
+时间戳的方式
+
+```js
+function throttle(fn, t) {
+  let time = undefined;
+  return function () {
+    if (!time || Date.now() - time >= t) {
+      fn();
+      time =  Date.now();
+    }
+  };
+}
+
+```
