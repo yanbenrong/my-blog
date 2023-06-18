@@ -344,7 +344,26 @@ let total = arr.reduce((prev, cur) => {
 - match 用于查找字符串，支持正则匹配
   :::
 
-## 原型链 - 查找规则
+## 原型链
+
+### 相关方法
+
+**Object.getPrototypeOf(对象)**
+获取对象的隐式原型
+
+**Object.prototype.isPrototypeOf(对象)**
+判断当前对象(左)是否在指定对象的原型链上
+
+**对象instanseof 函数**
+判断函数的原型是否在对象的原型链上
+
+**Object.create(对象)**
+创建一个新对象,其隐式原型指向指定的对象
+
+**Object.prototype.hasOwnProperty(属性名)**
+判断一个对象**自身**是否拥有某个属性
+
+### 查找规则
 
 ![原型链](../public/%E5%8E%9F%E5%9E%8B%E9%93%BE.png)
 
@@ -359,6 +378,14 @@ let total = arr.reduce((prev, cur) => {
 - proto 对象原型的`意义就在于为对象成员查找机制提供一个方向，或者说一条路线`
 
 - 可以使用 instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上
+
+### 应用
+
+**类数组转换真数组**
+
+```JS
+  Array.prototype.slice.call(类数组)
+```
 
 ## 深浅拷贝
 
