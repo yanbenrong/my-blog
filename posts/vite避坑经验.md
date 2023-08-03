@@ -1,9 +1,10 @@
 ---
-title: vite避坑经验
+title: vite&vue3避坑经验
 description: vite避坑经验
 date: 2023-04-04
 tags:
   - vite
+  - vue3
 ---
 
 ## Vite 动态导入的使用问题
@@ -153,3 +154,56 @@ export default defineConfig({
   }
 })
 ```
+
+## main.js中 App.vue找不到类型声明
+
+![](https://img-blog.csdnimg.cn/8dc16ae200b0475fb616858d8c58da50.png)
+
+解决办法：
+
+1.在src文件夹找到 vite-env.d.ts 加入以下代码：
+
+```js
+declare module "*.vue" {
+  import type { DefineComponent } from "vue";
+ 
+  const vueComponent: DefineComponent<{}, {}, any>;
+ 
+  export default vueComponent;
+}
+```
+
+2.若无vite-env.d.ts文件，则在项目根目录创建 env.d.ts 文件（如果已有，则在文件中追加）以下代码：
+
+```js
+declare module "*.vue" {
+  import type { DefineComponent } from "vue";
+ 
+  const vueComponent: DefineComponent<{}, {}, any>;
+ 
+  export default vueComponent;
+}
+```
+
+## main.js中找不到@/router的声明
+
+![](https://img-blog.csdnimg.cn/c6e70ffd91db43ffa598287976732fb6.png)
+
+解决办法：
+
+```js
+declare module '*@/router' {
+  import type { DefineComponent } from 'vue-router'
+  const component: DefineComponent<{}, {}, any>
+  export default component
+}
+```
+
+## 修改样式-深度选择器
+
+```css
+:deep(.el-input__wrapper){
+    .....
+}
+```
+
