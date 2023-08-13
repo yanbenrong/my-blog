@@ -8,7 +8,7 @@ tags:
 
 
 
-## 
+##
 
 ## 一台电脑双github配置
 
@@ -16,7 +16,7 @@ tags:
 
 编辑`~/.ssh/config`文件。如果该文件不存在的话，直接创建一个就好。里面的内容如下：
 
-```text
+```js
 Host github.com:WestonTonks  
 Hostname ssh.github.com
 User 1013091547@qq.com
@@ -85,4 +85,3 @@ IdentityFile ~/.ssh/id_ed25519
   `git remote add origin 远程仓库地址`
 - 推送到远程仓库
   `git push -u origin master（第一次提交，需要加 -u 选项）`
-

@@ -200,8 +200,6 @@ export default ChildCom;
 
 > *[https://zh-hans.reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values](https://gitee.com/link?target=https%3A%2F%2Fzh-hans.reactjs.org%2Fdocs%2Ftypechecking-with-proptypes.html%23default-prop-values)*
 
-
-
 # 高阶组件
 
 高阶组件英语全称为 *Higher-Order Components*，简称 *HOC*，所谓高阶组件，是 *React* 中一种复用逻辑的技巧。
@@ -1275,8 +1273,6 @@ export const MyContext2 = React.createContext();
 
 首先，我们导出两个上下文环境，接下来在 *App.jsx* 中，使用多个 *Provider* 作为数据的提供者
 
-
-
 ```
 import ChildCom1 from "./components/ChildCom1";
 import { MyContext1, MyContext2 } from "./context"
@@ -1402,8 +1398,6 @@ export default ChildCom2;
 ```
 
 *useContext(MyContext)* 相当于类组件中的 *static contextType = MyContext* 或者 <*MyContext.Consumer*>，但是我们**仍然需要在上层组件树中使用 <*MyContext.Provider*> 来为下层组件提供 *context***。
-
-
 
 # Render Props
 
@@ -1715,7 +1709,7 @@ export default App;
 
 那么自然而然疑问就来了，什么时候使用 *Render Props* ？什么时候使用 *HOC* ？
 
-一般来讲，***Render Props\* 应用于组件之间功能逻辑完全相同，仅仅是渲染的视图不同**。这个时候我们可以通过 *Render Props* 来指定要渲染的视图是什么。
+一般来讲，***Render Props\* 应用于组件之间功能逻辑完全相同，仅仅是渲染的视图不同**。这个时候我们可以通过*Render Props* 来指定要渲染的视图是什么。
 
 而 *HOC* 一般是抽离部分公共逻辑，也就是说组件之间有一部分逻辑相同，但是各自也有自己独有的逻辑，那么这个时候使用 *HOC* 比较合适，可以在原有的组件的基础上做一个增强处理。
 
@@ -1736,8 +1730,6 @@ ReactDOM.createPortal(child, container)
 - 何时用？
 
 - 如何用？
-
-  
 
 # Portals
 
@@ -2034,7 +2026,7 @@ export default class App extends PureComponent {
 }
 ```
 
-究其原因，是因为数组的地址并没有发生更改，而是数组内部发生的更改，但是 ***PureComponent\* 是浅比较，会认为数组并没有发生更改，因此不会进行渲染更新。**（如果使用 *Component* 则是没有问题的，因为 *React.Component* 并未实现 *shouldComponentUpdate*）
+究其原因，是因为数组的地址并没有发生更改，而是数组内部发生的更改，但是 ***PureComponent\* 是浅比较，会认为数组并没有发生更改，因此不会进行渲染更新。**（如果使用*Component*则是没有问题的，因为*React.Component*并未实现*shouldComponentUpdate*）
 
 但是不管怎样，我们都应该返回一个新的数组，而不是把原来的数组赋值给 *stu*：
 
@@ -2228,7 +2220,7 @@ export default React.memo(MyComponent, areEqual);
 
 *App* 根组件，引入了 *ChildCom1* 和 *ChildCom2* 这两个子组件：
 
-```react
+```js
 import { useState } from 'react';
 import ChildCom1 from "./components/ChildCom1"
 import ChildCom2 from "./components/ChildCom2"
@@ -2260,7 +2252,7 @@ export default App;
 
 *ChildCom1* 子组件：
 
-```react
+```js
 import { useState } from "react"
 function ChildCom1() {
     const [counter, setCounter] = useState(0);
@@ -2295,7 +2287,7 @@ export default ChildCom1;
 
 *App.jsx* 根组件，为两个子组件提供了数据以及修改数据的方法
 
-```react
+```js
 import { useState } from 'react';
 import ChildCom1 from "./components/ChildCom1"
 import ChildCom2 from "./components/ChildCom2"
@@ -2329,7 +2321,7 @@ export default App;
 
 *ChildCom1* 子组件接收从父组件传递过来的数据，并调用父组件传递过来的方法修改数据
 
-```react
+```js
 function ChildCom1(props) {
     console.log("ChildCom1 渲染了")
     return (
@@ -2356,7 +2348,7 @@ export default ChildCom1;
 
 首先，我们会想到使用前面所讲的 *React.memo* 来解决这个问题，如下：
 
-```react
+```js
 import React from "react"
 function ChildCom1(props) {
     console.log("ChildCom1 渲染了")
@@ -2381,7 +2373,7 @@ export default React.memo(ChildCom1);
 
 但是假设此时 *App* 组件还有一个单独的函数传入，那就不那么好使了：
 
-```react
+```js
 function App() {
   // App 组件自身有一个状态
   // ...
@@ -2422,7 +2414,7 @@ const memoizedCallback = useCallback(
 
 接下来我们来使用 *useCallback* 优化上面的问题，对 *App.jsx* 做如下的修改：
 
-```react
+```js
 import React, { useState, useCallback } from 'react';
 import ChildCom1 from "./components/ChildCom1"
 import ChildCom2 from "./components/ChildCom2"
@@ -2562,7 +2554,7 @@ export default App;
 >
 > 1. *useMemo* 计算结果是 *return* 回来的值, 主要用于缓存计算结果的值。应用场景如：需要进行二次计算的状态
 >
->    **example ：依赖数据变化时，才需要重新计算，来更新缓存的值，避免每次重新渲染都重新计算 **
+>    **example ：依赖数据变化时，才需要重新计算，来更新缓存的值，避免每次重新渲染都重新计算**
 >
 > 2. *useCallback* 计算结果是函数, 主要用于缓存函数，应用场景如: 需要缓存的函数，因为函数式组件每次任何一个 *state* 的变化，整个组件都会被重新刷新，一些函数是没有必要被重新刷新的，此时就应该缓存起来，提高性能，和减少资源浪费。
 >

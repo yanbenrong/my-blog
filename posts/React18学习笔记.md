@@ -40,8 +40,6 @@ tags:
    }
    ```
 
-   
-
 4. 如果新的状态要根据之前的状态进行运算，使用函数的方式改变状态（*setState* 的第一个函数）
 
    ```JS
@@ -52,8 +50,6 @@ tags:
    }
    ```
 
-   
-
 *React* 会对异步的 *setState* 进行优化，将多次 *setState* 进行合并（将多次状态改变完成后，再统一对 *state* 进行改变，然后触发 *render*）
 
 ## 受控组件与非受控组件
@@ -62,13 +58,13 @@ tags:
 
 受控意思是 **将表单中的控件和状态进行绑定，之后都是针对状态进行操作**
 
- ## useEffect
+## useEffect
 
 需要注意的是 useEffect第一个参数函数中的返回值 是执行清理工作的，
 
  该函数会在下一次渲染之后，但是在执行副作用操作之前执行。
 
-```react
+```js
 useEffect(()=>{
    // xxxx 
    return ()=>{
@@ -79,9 +75,9 @@ useEffect(()=>{
 
 # React Router v6
 
-官网地址 **https://reactrouter.com/en/main**
+官网地址 **<https://reactrouter.com/en/main>**
 
-###  组件
+### 组件
 
 - BrowserRouter：整个前端路由以 history 模式开始，包裹根组件
 - HashRouter：整个前端路由以 hash 模式开始，包裹根组件
@@ -141,14 +137,12 @@ export default Router;
 
 **使用**
 
-```reac
+```js
 import Router from "./router";
 
 .......
 <Router />
 ```
-
-
 
 ### 嵌套路由
 
@@ -177,7 +171,7 @@ import Router from "./router";
 
 之后，使用 Outlet 组件，该组件表示匹配上的子路由组件渲染的位置。
 
-```react
+```js
 import { Outlet } from "react-router-dom"
 
 
@@ -192,22 +186,18 @@ function About() {
 export default About;
 ```
 
-
-
 # css模块化
 
  *CSS* 文件名包含 *module*，格式为 *xxx.module.css*，该 *CSS* 是一个局部的 *CSS* 样式文件，类似于 *vue* 组件里面的 **scoped**。
 
-### 在className中 书写多个模块化类名：
+### 在className中 书写多个模块化类名
 
-```react
+```js
 方法一：
 className={styles.firstClass + ' ' + styles.secondClass}
 方法二：
 className={[styles.firstClass, styles.secondClass].join(' ')}
 ```
-
-
 
 # 配置请求代理转发
 
@@ -215,17 +205,15 @@ className={[styles.firstClass, styles.secondClass].join(' ')}
 
 在使用的时候，还需要安装一个插件 *http-proxy-middleware*
 
-# 渲染html内容 
+# 渲染html内容
 
 vue中使用的是 v-html，
 
 react中可以使用 dangerouslySetInnerHTML。
 
-```react
+```js
  <div dangerouslySetInnerHTML={{ __html: captcha }}></div>
 ```
-
-
 
 # 修改打包后的目录
 
@@ -233,7 +221,7 @@ react中可以使用 dangerouslySetInnerHTML。
 
 我们需要做的是修改打包好后的目录。首先运行下面的命令：
 
-```
+```js
 npm run eject
 ```
 
@@ -241,7 +229,7 @@ npm run eject
 
 弹射出来后，会多出来很多隐藏文件，我们就可以修改对应的配置，但是会有一个关于 *Babel* 的错误，最快的解决方案就是在 *package.json* 中删除如下的配置：
 
-```
+```js
 "eslintConfig": {
     "extends": [
       "react-app",
@@ -304,9 +292,9 @@ extraReducers : {
 }
 ```
 
-# npm i @toast-ui/react-editor -S 安装报错 
+# npm i @toast-ui/react-editor -S 安装报错
 
-```react
+```js
 npm ERR! Could not resolve dependency:
 npm ERR! peer react@"^17.0.1" from @toast-ui/react-editor@3.2.3
 ```
@@ -323,7 +311,7 @@ npm i @toast-ui/react-editor -S --force
 
 ## 基本使用 示例
 
-```react
+```js
 
 // 定义model 示例：
 import { deleteAdmin, getAdmin } from '../services/admin';
@@ -401,4 +389,3 @@ export const dva = {
   },
 };
 ```
-

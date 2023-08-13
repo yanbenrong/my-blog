@@ -1,5 +1,9 @@
 ---
-
+title: js常用代码片段
+description: js常用代码片段
+date: 2020-12-08
+tags:
+  - js常用代码片段
 ---
 
 ## blob 二进制文件流 下载
