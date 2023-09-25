@@ -1,3 +1,10 @@
+---
+title: mongodb
+description: mongodb
+date: 2023-08-18
+tags:
+  - mongodb
+---
 # mongodb数据恢复
 
 安装 *Mongodb*：*[https://www.mongodb.com/](https://gitee.com/link?target=https%3A%2F%2Fwww.mongodb.com%2F)*

@@ -245,3 +245,37 @@ fs模块：https://nodejs.org/dist/latest-v12.x/docs/api/fs.html
 - time：仅时间
 
  
+
+# express
+
+## 内置中间件
+
+```
+// 映射public目录中的静态资源
+const path = require("path");
+const staticRoot = path.resolve(__dirname, "../public");
+app.use(express.static(staticRoot));
+
+// 解析 application/x-www-form-urlencoded 格式的请求体
+app.use(express.urlencoded({ extended: true }));
+
+// 解析 application/json 格式的请求体
+app.use(express.json());
+```
+
+
+
+
+
+
+
+
+
+# 断点调试
+
+```
+// 启动node服务时
+命令行加入 --inspect
+"server":"node --inspect *****"
+```
+
